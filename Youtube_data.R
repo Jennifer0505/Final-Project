@@ -2,20 +2,14 @@
 #to exist. It happened without any preparation and many students and faculties have been killed
 #by the shooter. From my perspective, it is an important social issue that everyone need to pay
 #attention to in order to have a stable society in the future. 
-#analyze what users say about school shootings(positive, negative)
-#create word cloud
-#visualize which location has happened school shootings. hard to happen, collecet new data about where has happened school shootings
-#comparison different comments in different year, frequent used words. 
-#time series of number of everyday users watching ,through data data frame only enough
-#people who have like is talking about what 
-#which channel report the most 
 
-#word cloud for real time data & historical data, compare, nothing change, always about the gun control, need more attention
-#barplot/time series for word frequency compare, real&historical2017,2016,2015,2014
-#sentiment analysis compare
-#find a data can get location, did geo graph
-#statistics analysis, gun control related with school shootings, whether there is a change(look at assignment 1) 
-#gun!!, find gun's relationship with school shootings. 
+#Word Cloud for real time data
+#Bar plot The Top 10 words in the word cloud
+#Sentiment Analysis and Pie Chart for real time data
+#Comparison Word cloud for data from 2012 to now 
+#Comparison between top 10 words in teh word cloud from 2012 to now 
+#Time Series on video related with school shootings
+
 library(tuber)
 library(dplyr)
 library(tidytext)
@@ -65,7 +59,6 @@ real_time_data_comments <- Corpus(VectorSource(real_time_data$all_comments.textO
 real_time_data_comments <- tm_map(real_time_data_comments, removeNumbers)
 real_time_data_comments <- tm_map(real_time_data_comments, removeWords, stopwords("english"))
 real_time_data_comments <- tm_map(real_time_data_comments, removePunctuation )
-real_time_data_comments <- tm_map(real_time_data_comments, removeNumbers)
 real_time_data_comments <- tm_map(real_time_data_comments, content_transformer(tolower))
 real_time_data_comments <- tm_map(real_time_data_comments, removeWords, c("this","so", "will", "can", 
                                                                           "why","said","get","really",
@@ -77,9 +70,11 @@ real_time_data_comments <- tm_map(real_time_data_comments, stripWhitespace)
 real_time_data_comments <- TermDocumentMatrix(real_time_data_comments)
 real_time_data_comments <- as.matrix(real_time_data_comments)
 real_time_data_comments <- sort(rowSums(real_time_data_comments), decreasing=TRUE)
-real_time_data_comments <- data.frame(word=names(real_time_data_comments), freq=real_time_data_comments)
+real_time_data_comments <- data.frame(word=names(real_time_data_comments), 
+                                      freq=real_time_data_comments)
 wordcloud(real_time_data_comments$word, real_time_data_comments$freq, random.order = FALSE, 
-          rot.per = 0.3, scale = c(4,.5), max.words=800, colors = rainbow(5),vfont= c ( "sans serif" , "plain" ))
+          rot.per = 0.3, scale = c(4,.5), max.words=800, colors = rainbow(5),
+          vfont= c ( "sans serif" , "plain" ), shape="circle")
 
 #According to this word cloud, people basically commented through three aspects. 
 #The main perspective is an intense emotion toward the shooting, which they talk about the words like "gun" , "shooting" and " kill" a lot. 
@@ -100,9 +95,7 @@ barplot(real_high_frequency$freq, width=1,space= 0.5,
 #Sentiment Analysis
 RTD_analysis <- str_split(real_time_data$all_comments.textOriginal, pattern = "\\s+")
 RTD_analysis <-unlist(RTD_analysis)
-RTD_analysis <- RTD_analysis %>% 
-  unnest_tokens(word, text)
-RTD_analysis <- data_frame(line = 1:45251, text = RTD_analysis)
+RTD_analysis <- data_frame(line = 1:45256, text = RTD_analysis)
 RTD_analysis <- RTD_analysis %>%
   unnest_tokens(word, text)
 bing_positive <- get_sentiments("bing") %>%
@@ -124,19 +117,23 @@ anticipation <-get_sentiments("nrc") %>%
 joy <- get_sentiments("nrc") %>%
   filter(sentiment == "joy")
 RTD_anger<-RTD_analysis %>%
-  inner_join(nrc_anger) %>%
+  inner_join(anger) %>%
   count(word, sentiment, sort = TRUE)
 RTD_anticipation<-RTD_analysis %>%
-  inner_join(nrc_anticipation) %>%
+  inner_join(anticipation) %>%
   count(word, sentiment,sort = TRUE)
 RTD_joy<-RTD_analysis %>%
-  inner_join(nrc_joy) %>%
+  inner_join(joy) %>%
   count(word, sentiment, sort = TRUE)
 
 #Bar Plot for sentimental analysis
 slices <- c(anticipation_total <- sum(RTD_anticipation$n), anger_total <- sum(RTD_anger$n)
             , joy_total <- sum(RTD_joy$n))
 lbls <- c("anticipation", "anger", "joy")
+slices <- c(1000, 1881, 706)
+pct <- round(slices/sum(slices)*100)
+lbls <- paste(lbls, pct)
+lbls <- paste(lbls,"%",sep="")
 pie3D(slices,labels=lbls,explode=0.1,
       main="Real Time: Pie Chart of sentiment analysis")
 
@@ -261,11 +258,11 @@ corpus = Corpus(VectorSource(all))
 tdm = TermDocumentMatrix(corpus)
 tdm = as.matrix(tdm)
 colnames(tdm) = c("comments_real","comments_2012","comments_2013","comments_2014","comments_2015","comments_2016","comments_2017")
-#Comparison Word Cloud
 
+#Comparison Word Cloud
 comparison.cloud(tdm, random.order=FALSE, 
                  colors = c("pink", "#00B2FF", "red", "#FF0099", "#6600CC","blue","green"),
-                 title.size=1)
+                 title.size=1, shape="circle")
 #according to the word cloud we could notice that comments in the 2017 is the most, despite 
 #that we only include part of the comments in 2018. We could conjecutred that school shootings
 #become more and more serious and importnat among people around 2017, so there are more comments
@@ -394,15 +391,20 @@ News_2012 <- News_2012[!duplicated(News_2012$News_2012.title),]
 ts_shooting <- ts(c(nrow(News_2012), nrow(News_2013), nrow(News_2014), 
                     nrow(News_2015), nrow(News_2016), nrow(News_2017),
                     nrow(News) ), start=c(2012), end=c(2018))
-plot(ts_shooting)
-
-#we can see from the graph that although 
-
-#Anova table of the relationship between gun and like?
-
-
-
-
+plot(ts_shooting, main = "Time Series for Related School Shootings' Videos")
+namebank <- as.character(c(2012:2018))
+text(c(2012:2018), ts_shooting, namebank,cex=0.9)
+#According to the plots, we could see that 2013 there is a sharp increase in the 2013 about the 
+#videos that related with school shootings. According to the data in the past, I guess that
+#this is because the number of school shootings is doubled from 2012 and 2013, so there were 
+#large amount of attention on this issue so the number of videos increase in the youtube. 
+#2014 and 2015 have similar number of videos about shool shootings and this might also because.
+#number of school shootings in 2014 and 2014 are similar. The number of videos about shool shootings
+#is increasing from 2016 and 2017 because the number of school shootings also decreased. However, 
+#the number of videos about school shootings in 2018 are decreasing because this is only part of 
+#the data in 2018. Since the number of shool shootings has already reached 17 cases in 2018, I 
+#predicted that the number of videos about school shootings would also increase compare to previews
+#years. 
 
 
 
