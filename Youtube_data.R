@@ -292,31 +292,31 @@ frequency_2016 = frequency.text(clean_2016)
 frequency_2017 = frequency.text(clean_2017)
 structure <- par(mfrow=c(3,3))
 barplot(frequency_real$freq, width=1,space= 0.5,
-        names.arg = frequency_real$word,ylim=c(0,2500),
+        names.arg = frequency_real$word,ylim=c(0,3000),
         col =rainbow(20), main ="Most frequent words_real",
         ylab = "Word frequencies",cex.names = 0.6) 
 barplot(frequency_2012$freq, width=1,space= 0.5,
-        names.arg = frequency_2012$word,ylim=c(0,2500),
+        names.arg = frequency_2012$word,ylim=c(0,3000),
         col =rainbow(20), main ="Most frequent words_2012",
         ylab = "Word frequencies",cex.names = 0.6) 
 barplot(frequency_2013$freq, width=1,space= 0.5,
-        names.arg = frequency_2013$word,ylim=c(0,2500),
+        names.arg = frequency_2013$word,ylim=c(0,3000),
         col =rainbow(20), main ="Most frequent words_2013",
         ylab = "Word frequencies",cex.names = 0.6) 
 barplot(frequency_2014$freq, width=1,space= 0.5,
-        names.arg = frequency_2014$word,ylim=c(0,2500),
+        names.arg = frequency_2014$word,ylim=c(0,3000),
         col =rainbow(20), main ="Most frequent words_2014",
         ylab = "Word frequencies",cex.names = 0.6) 
 barplot(frequency_2015$freq, width=1,space= 0.5,
-        names.arg = frequency_2015$word,ylim=c(0,2500),
+        names.arg = frequency_2015$word,ylim=c(0,3000),
         col =rainbow(20), main ="Most frequent words_2015",
         ylab = "Word frequencies",cex.names = 0.6) 
 barplot(frequency_2016$freq, width=1,space= 0.5,
-        names.arg = frequency_2016$word,ylim=c(0,2500),
+        names.arg = frequency_2016$word,ylim=c(0,3000),
         col =rainbow(20), main ="Most frequent words_2016",
         ylab = "Word frequencies",cex.names = 0.6) 
 barplot(frequency_2017$freq, width=1,space= 0.5,
-        names.arg = frequency_2017$word,ylim=c(0,2500),
+        names.arg = frequency_2017$word,ylim=c(0,3000),
         col =rainbow(20), main ="Most frequent words_2017",
         ylab = "Word frequencies",cex.names = 0.6) 
 dev.off()
