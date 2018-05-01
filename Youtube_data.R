@@ -336,32 +336,40 @@ dev.off()
 
 #Time Series on video related with school shootings
 #Real Time Data for how many reporting about school shootings/time series something like that 
-news <- yt_search("school shootings", lang="en", published_after =  "2018-04-10T00:00:00Z")
-new <- yt_search("school shooting", lang ="en",published_after =  "2018-04-10T00:00:00Z")
-News <- rbind(news,new)
+#news <- yt_search("school shootings", lang="en", published_after =  "2018-04-10T00:00:00Z")
+#new <- yt_search("school shooting", lang ="en",published_after =  "2018-04-10T00:00:00Z")
+#News <- rbind(news,new)
+#write.csv(News, "News.csv")
+News <- read.csv("News.csv", header=TRUE)
 News <- data.frame(News$publishedAt,
                    News$title)
 #Eliminating the same title
 News <- News[!duplicated(News$News.title),]
 #2017 
-news_2017 <- yt_search("school shootings", lang="en", published_after =  "2017-01-1T00:00:00Z", published_before = "2017-12-31T00:00:00Z")
-new_2017 <- yt_search("school shooting", lang ="en",published_after =  "2017-01-1T00:00:00Z", published_before = "2017-12-31T00:00:00Z")
-News_2017 <- rbind(news_2017,new_2017)
+#news_2017 <- yt_search("school shootings", lang="en", published_after =  "2017-01-1T00:00:00Z", published_before = "2017-12-31T00:00:00Z")
+#new_2017 <- yt_search("school shooting", lang ="en",published_after =  "2017-01-1T00:00:00Z", published_before = "2017-12-31T00:00:00Z")
+#News_2017 <- rbind(news_2017,new_2017)
+#write.csv(News_2017, "News_2017.csv")
+News_2017 <- read.csv("News_2017.csv", header=TRUE)
 News_2017 <- data.frame(News_2017$publishedAt,
-                   News_2017$title)
+                        News_2017$title)
 News_2017 <- News_2017[!duplicated(News_2017$News_2017.title),]
 #2016
-news_2016 <- yt_search("school shootings", lang="en", published_after =  "2016-01-1T00:00:00Z", published_before = "2016-12-31T00:00:00Z")
-new_2016 <- yt_search("school shooting", lang ="en",published_after =  "2016-01-1T00:00:00Z", published_before = "2016-12-31T00:00:00Z")
-News_2016 <- rbind(news_2016,new_2016)
+#news_2016 <- yt_search("school shootings", lang="en", published_after =  "2016-01-1T00:00:00Z", published_before = "2016-12-31T00:00:00Z")
+#new_2016 <- yt_search("school shooting", lang ="en",published_after =  "2016-01-1T00:00:00Z", published_before = "2016-12-31T00:00:00Z")
+#News_2016 <- rbind(news_2016,new_2016)
+#write.csv(News_2016, "News_2016.csv")
+News_2016 <- read.csv("news_2016.csv", header=TRUE)
 News_2016 <- data.frame(News_2016$publishedAt,
                         News_2016$title)
 News_2016 <- News_2016[!duplicated(News_2016$News_2016.title),]
 
 #2015
-news_2015 <- yt_search("school shootings", lang="en", published_after =  "2015-01-1T00:00:00Z", published_before = "2015-12-31T00:00:00Z")
-new_2015 <- yt_search("school shooting", lang ="en",published_after =  "2015-01-1T00:00:00Z", published_before = "2015-12-31T00:00:00Z")
-News_2015 <- rbind(news_2015,new_2015)
+#news_2015 <- yt_search("school shootings", lang="en", published_after =  "2015-01-1T00:00:00Z", published_before = "2015-12-31T00:00:00Z")
+#new_2015 <- yt_search("school shooting", lang ="en",published_after =  "2015-01-1T00:00:00Z", published_before = "2015-12-31T00:00:00Z")
+#News_2015 <- rbind(news_2015,new_2015)
+#write.csv(News_2015, "News_2015.csv")
+News_2015 <- read.csv("News_2015.csv", header=TRUE)
 News_2015 <- data.frame(News_2015$publishedAt,
                         News_2015$title)
 News_2015 <- News_2015[!duplicated(News_2015$News_2015.title),]
@@ -369,6 +377,8 @@ News_2015 <- News_2015[!duplicated(News_2015$News_2015.title),]
 news_2014 <- yt_search("school shootings", lang="en", published_after =  "2014-01-1T00:00:00Z", published_before = "2014-12-31T00:00:00Z")
 new_2014 <- yt_search("school shooting", lang ="en",published_after =  "2014-01-1T00:00:00Z", published_before = "2014-12-31T00:00:00Z")
 News_2014 <- rbind(news_2014,new_2014)
+#write.csv(news_2014, "news_2014.csv")
+news_2014 <- read.csv("news_2014.csv", header=TRUE)
 News_2014 <- data.frame(News_2014$publishedAt,
                         News_2014$title)
 News_2014 <- News_2014[!duplicated(News_2014$News_2014.title),]
