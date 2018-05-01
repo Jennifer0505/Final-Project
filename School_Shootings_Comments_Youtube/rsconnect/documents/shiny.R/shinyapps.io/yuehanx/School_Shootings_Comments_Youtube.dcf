@@ -5,8 +5,8 @@ account: yuehanx
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 334362
-bundleId: 1348756
+bundleId: 1348794
 url: https://yuehanx.shinyapps.io/School_Shootings_Comments_Youtube/
-when: 1525149353.26782
+when: 1525152178.75498
 asMultiple: FALSE
 asStatic: FALSE
