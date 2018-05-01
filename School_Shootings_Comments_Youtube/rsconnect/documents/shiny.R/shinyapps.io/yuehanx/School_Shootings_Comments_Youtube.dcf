@@ -1,0 +1,13 @@
+name: School_Shootings_Comments_Youtube
+title: School_Shootings_Comments_Youtube
+username:
+account: yuehanx
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 334362
+bundleId: 1348623
+url: https://yuehanx.shinyapps.io/School_Shootings_Comments_Youtube/
+when: 1525142588.65854
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: tdm.csv
