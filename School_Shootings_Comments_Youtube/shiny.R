@@ -13,8 +13,17 @@ library(lubridate)
 library(tm)
 library(SnowballC)
 library(RColorBrewer)
-
-
+frequency_real <- read.csv("frequency_real.csv", header=TRUE)
+frequency_2017 <- read.csv("frequency_2017.csv", header=TRUE)
+frequency_2016 <- read.csv("frequency_2016.csv", header=TRUE)
+frequency_2015 <- read.csv("frequency_2015.csv", header=TRUE)
+frequency_2014 <- read.csv("frequency_2014.csv", header=TRUE)
+frequency_2013 <- read.csv("frequency_2013.csv", header=TRUE)
+frequency_2012 <- read.csv("frequency_2012.csv", header=TRUE)
+tdm <- read.csv("tdm.csv", header=TRUE)
+rownames(tdm) <- tdm[,1]
+tdm <- tdm[2:8]
+tdm <- as.matrix(tdm)
 #global
 clouds <- list("2018"="2018.csv","2017"="2017.csv","2016"="2016.csv",
                 "2015"="2015.csv","2014"="2014.csv",
