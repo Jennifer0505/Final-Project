@@ -22,9 +22,9 @@ library(wordcloud)
 library(RColorBrewer)
 library(plotrix)
 library(reshape)
-clientID <- "979385012952-iive5jqvebq2emfhrnld66iflt1rq1t8.apps.googleusercontent.com"
-client_secrete <- "F5n5Sxt2PXkeeUnnI89mJGo5"
-yt_oauth(clientID, client_secrete, token = '')
+#clientID <- "979385012952-iive5jqvebq2emfhrnld66iflt1rq1t8.apps.googleusercontent.com"
+#client_secrete <- "F5n5Sxt2PXkeeUnnI89mJGo5"
+#yt_oauth(clientID, client_secrete, token = '')
 #Collecting Real Time Data for comments
 #Selecting abc, CNN, NBC, fox and CBS channel's school shootings' news with the most click.
 #comments_abc <- get_all_comments(video_id = c('xgIJosk0pnA'))
@@ -374,25 +374,29 @@ News_2015 <- data.frame(News_2015$publishedAt,
                         News_2015$title)
 News_2015 <- News_2015[!duplicated(News_2015$News_2015.title),]
 #2014
-news_2014 <- yt_search("school shootings", lang="en", published_after =  "2014-01-1T00:00:00Z", published_before = "2014-12-31T00:00:00Z")
-new_2014 <- yt_search("school shooting", lang ="en",published_after =  "2014-01-1T00:00:00Z", published_before = "2014-12-31T00:00:00Z")
-News_2014 <- rbind(news_2014,new_2014)
-#write.csv(news_2014, "news_2014.csv")
-news_2014 <- read.csv("news_2014.csv", header=TRUE)
+#news_2014 <- yt_search("school shootings", lang="en", published_after =  "2014-01-1T00:00:00Z", published_before = "2014-12-31T00:00:00Z")
+#new_2014 <- yt_search("school shooting", lang ="en",published_after =  "2014-01-1T00:00:00Z", published_before = "2014-12-31T00:00:00Z")
+#News_2014 <- rbind(news_2014,new_2014)
+#write.csv(News_2014, "News_2014.csv")
+News_2014 <- read.csv("News_2014.csv", header=TRUE)
 News_2014 <- data.frame(News_2014$publishedAt,
                         News_2014$title)
 News_2014 <- News_2014[!duplicated(News_2014$News_2014.title),]
 #2013
-news_2013 <- yt_search("school shootings", lang="en", published_after =  "2013-01-1T00:00:00Z", published_before = "2016-12-31T00:00:00Z")
-new_2013 <- yt_search("school shooting", lang ="en",published_after =  "2013-01-1T00:00:00Z", published_before = "2016-12-31T00:00:00Z")
-News_2013 <- rbind(news_2013,new_2013)
+#news_2013 <- yt_search("school shootings", lang="en", published_after =  "2013-01-1T00:00:00Z", published_before = "2016-12-31T00:00:00Z")
+#new_2013 <- yt_search("school shooting", lang ="en",published_after =  "2013-01-1T00:00:00Z", published_before = "2016-12-31T00:00:00Z")
+#News_2013 <- rbind(news_2013,new_2013)
+#write.csv(News_2013, "News_2013.csv")
+News_2013 <- read.csv("News_2013.csv", header=TRUE)
 News_2013 <- data.frame(News_2013$publishedAt,
                         News_2013$title)
 News_2013 <- News_2013[!duplicated(News_2013$News_2013.title),]
 #2012
-news_2012 <- yt_search("school shootings", lang="en", published_after =  "2012-01-1T00:00:00Z", published_before = "2012-12-31T00:00:00Z")
-new_2012 <- yt_search("school shooting", lang ="en",published_after =  "2012-01-1T00:00:00Z", published_before = "2012-12-31T00:00:00Z")
-News_2012 <- rbind(news_2012,new_2012)
+#news_2012 <- yt_search("school shootings", lang="en", published_after =  "2012-01-1T00:00:00Z", published_before = "2012-12-31T00:00:00Z")
+#new_2012 <- yt_search("school shooting", lang ="en",published_after =  "2012-01-1T00:00:00Z", published_before = "2012-12-31T00:00:00Z")
+#News_2012 <- rbind(news_2012,new_2012)
+#write.csv(News_2012, "News_2012.csv")
+News_2012 <- read.csv("News_2012.csv", header=TRUE)
 News_2012 <- data.frame(News_2012$publishedAt,
                         News_2012$title)
 News_2012 <- News_2012[!duplicated(News_2012$News_2012.title),]
