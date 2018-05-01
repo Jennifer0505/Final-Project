@@ -16,7 +16,7 @@ library(RColorBrewer)
 
 
 #global
-clouds <<- list("2018"="2018.csv","2017"="2017.csv","2016"="2016.csv",
+clouds <- list("2018"="2018.csv","2017"="2017.csv","2016"="2016.csv",
                 "2015"="2015.csv","2014"="2014.csv",
                 "2013"="2013.csv", "2012"="2012.csv")
 getTermMatrix <- memoise(function(year){
@@ -29,21 +29,6 @@ getTermMatrix <- memoise(function(year){
   sort(rowSums(text), decreasing = TRUE)
 })
 
-
-
-term <- function(x){
-  barplot(x$freq, width=1,space= 0.5,
-          names.arg = x$word,ylim=c(0,3000),
-          col =rainbow(20), main ="Most frequent words",
-          ylab = "Word frequencies",cex.names = 0.6) 
-}
-x <- 
-  year <- function(){
-    if (x == 2018){
-      print(300)}
-    if (x == 2017){
-      print(100)}
-  }
 ui <- dashboardPage(
   dashboardHeader(title = "School Shootings"),
   dashboardSidebar(
@@ -142,21 +127,40 @@ server <- function(input, output, session){
                   colors = brewer.pal(8, "Dark2"))
   })
   output$plot2 <- renderPlot({
-    term(frequency[1:2])})
+    barplot(frequency_real$freq, width=1,space= 0.5,
+          names.arg = frequency_real$word,ylim=c(0,2500),
+          col =rainbow(20), main ="Most frequent words_real",
+          ylab = "Word frequencies",cex.names = 0.6)})
   output$plot3 <- renderPlot({
-    term(frequency[3:4])})
+    barplot(frequency_2012$freq, width=1,space= 0.5,
+          names.arg = frequency_2012$word,ylim=c(0,2500),
+          col =rainbow(20), main ="Most frequent words_2012",
+          ylab = "Word frequencies",cex.names = 0.6)})
   output$plot4 <- renderPlot({
-    term(frequency[5:6])})
+    barplot(frequency_2013$freq, width=1,space= 0.5,
+          names.arg = frequency_2013$word,ylim=c(0,2500),
+          col =rainbow(20), main ="Most frequent words_2013",
+          ylab = "Word frequencies",cex.names = 0.6)})
   output$plot5 <- renderPlot({
-    term(frequency[7:8])})
+    barplot(frequency_2014$freq, width=1,space= 0.5,
+          names.arg = frequency_2014$word,ylim=c(0,2500),
+          col =rainbow(20), main ="Most frequent words_2014",
+          ylab = "Word frequencies",cex.names = 0.6)})
   output$plot6 <- renderPlot({
-    term(frequency[9:10])})
+    barplot(frequency_2015$freq, width=1,space= 0.5,
+          names.arg = frequency_2015$word,ylim=c(0,2500),
+          col =rainbow(20), main ="Most frequent words_2015",
+          ylab = "Word frequencies",cex.names = 0.6)})
   output$plot7 <- renderPlot({
-    term(frequency[11:12])})
+    barplot(frequency_2016$freq, width=1,space= 0.5,
+          names.arg = frequency_2016$word,ylim=c(0,2500),
+          col =rainbow(20), main ="Most frequent words_2016",
+          ylab = "Word frequencies",cex.names = 0.6)})
   output$plot8 <- renderPlot({
-    term(frequency[13:14]) 
-    
-  })
+    barplot(frequency_2017$freq, width=1,space= 0.5,
+          names.arg = frequency_2017$word,ylim=c(0,2500),
+          col =rainbow(20), main ="Most frequent words_2017",
+          ylab = "Word frequencies",cex.names = 0.6)}) 
   output$plot9 <- renderPlot({
     slices <- c(anticipation_total <- 1000, anger_total <- 1881, joy_total <- 706)
     lbls <- c("anticipation", "anger", "joy")
