@@ -9,6 +9,19 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tuber)
+library(dplyr)
+library(tidytext)
+library(stringr)
+library(lubridate)
+library(dplyr)
+library(tm)
+library(SnowballC)
+library(wordcloud)
+library(RColorBrewer)
+library(plotrix)
+library(reshape)
+library(tinytex)
 ```
 
 #Introduction
@@ -25,22 +38,6 @@ Sentiment Analysis and Pie Chart for real-time data
 Comparison Word cloud for data from 2012 to now 
 Comparison of top 10 words in the word cloud from 2012 to now 
 Time Series on video related to school shootings
-```{r cars}
-library(tuber)
-library(dplyr)
-library(tidytext)
-library(stringr)
-library(lubridate)
-library(dplyr)
-library(tm)
-library(SnowballC)
-library(wordcloud)
-library(RColorBrewer)
-library(plotrix)
-library(reshape)
-library(tinytex)
-```
-
 
 ```{r, echo=FALSE}
 #write.csv(real_time_data, file="real_time_data.csv")
