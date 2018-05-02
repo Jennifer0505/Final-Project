@@ -1,0 +1,446 @@
+knitr::opts_chunk$set(echo = TRUE)
+require(devtools)
+require(twitteR)
+require(ggmap)
+require(googleway)
+require(plyr)
+require(stringr)
+api_key <- 	"nwR0GJ8IVl8Thg1Kwq1PYwwvj"
+api_key <- 	"nwR0GJ8IVl8Thg1Kwq1PYwwvj"
+api_secret <- "4a9AAi9jsfINxUJ89SQd4V61irtwUJwbGMg1Ggg5DNx1vKV7EH"
+access_token <- "927639034834440192-UtCScP9mSEwHPLIRkaUEovcSfwQoZv1"
+access_token_secret <- "7RLFGAlwSYHyCFAMqN6iwQpdceWoGEjgR55TOS9xlxlQb"
+setup_twitter_oauth(api_key, api_secret, access_token, access_token_secret)
+require(devtools)
+require(twitteR)
+install.packages("twitteR")
+require(twitteR)
+require(ggmap)
+require(googleway)
+install.packages("googleway")
+require(plyr)
+require(stringr)
+setup_twitter_oauth(api_key, api_secret, access_token, access_token_secret)
+tweets1 <- searchTwitter("#Californiafires", n=2500, lang="en")
+tweets.df1 <- twListToDF(tweets1)
+View(tweets.df1)
+library(graphTweets)
+library(igraph)
+library(streamR)
+library(ROAuth)
+requestURL <- "https://api.twitter.com/oauth/request_token"
+accessURL <- "https://api.twitter.com/oauth/access_token"
+authURL <- "https://api.twitter.com/oauth/authorize"
+consumerKey <- 	"LFNRqX5i1PkB69SjEEncXWloq"
+consumerSecret <- "4sDHqY6aLm7PRfJLxpq6GsWqphZxzX3dXLjssSLXYhO8wPwL3F"
+my_oauth <- OAuthFactory$new(consumerKey = consumerKey, consumerSecret = consumerSecret,
+requestURL = requestURL, accessURL = accessURL, authURL = authURL)
+my_oauth$handshake(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl"))
+save(my_oauth, file = "my_oauth.Rdata")
+load("~/Desktop/MA415/Final-Project/my_oauth.Rdata")
+?searchTwitter
+knitr::opts_chunk$set(echo = TRUE)
+tweets2 <- searchTwitter("'California fires'", n=2500, lang="en")
+tweets1 <- searchTwitter("#Californiafires", n=2500, lang="en")
+api_key <- 	"nwR0GJ8IVl8Thg1Kwq1PYwwvj"
+api_secret <- "4a9AAi9jsfINxUJ89SQd4V61irtwUJwbGMg1Ggg5DNx1vKV7EH"
+access_token <- "927639034834440192-UtCScP9mSEwHPLIRkaUEovcSfwQoZv1"
+access_token_secret <- "7RLFGAlwSYHyCFAMqN6iwQpdceWoGEjgR55TOS9xlxlQb"
+setup_twitter_oauth(api_key, api_secret, access_token, access_token_secret)
+require(devtools)
+require(twitteR)
+require(ggmap)
+require(googleway)
+require(plyr)
+require(stringr)
+setup_twitter_oauth(api_key, api_secret, access_token, access_token_secret)
+tweets1 <- searchTwitter("#Californiafires", n=2500, lang="en")
+tweets.df1 <- twListToDF(tweets1)
+tweets2 <- searchTwitter("'California fires'", n=2500, lang="en")
+register_google(key = 'AIzaSyDRrd64KYNUNGg6KvDz9V1sHUyTwO7iaM8')
+userinfo1 <- lookupUsers(tweets.df1$screenName)  # Batch lookup of user info
+userFrame1 <- twListToDF(userinfo1)
+locatedUsers1 <- !is.na(userFrame1$location)  # Keep only users with location info
+locations1 <- geocode(userFrame1$location[locatedUsers1])
+library(graphTweets)
+library(igraph)
+library(streamR)
+library(ROAuth)
+requestURL <- "https://api.twitter.com/oauth/request_token"
+accessURL <- "https://api.twitter.com/oauth/access_token"
+authURL <- "https://api.twitter.com/oauth/authorize"
+consumerKey <- 	"LFNRqX5i1PkB69SjEEncXWloq"
+consumerSecret <- "4sDHqY6aLm7PRfJLxpq6GsWqphZxzX3dXLjssSLXYhO8wPwL3F"
+my_oauth <- OAuthFactory$new(consumerKey = consumerKey, consumerSecret = consumerSecret,
+requestURL = requestURL, accessURL = accessURL, authURL = authURL)
+my_oauth$handshake(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl"))
+save(my_oauth, file = "my_oauth.Rdata")
+api_key <- 	"LFNRqX5i1PkB69SjEEncXWloq"
+api_secret <- "4sDHqY6aLm7PRfJLxpq6GsWqphZxzX3dXLjssSLXYhO8wPwL3F"
+consumerKey <- 	"kbYlzDS9qCDcU0Veub36hzmZT"
+consumerSecret <- "	lwUyAehocYxNEHOL5aVNlpcWF9v90y9N34qYRBuZYuK2k0AMoX"
+my_oauth <- OAuthFactory$new(consumerKey = consumerKey, consumerSecret = consumerSecret,
+requestURL = requestURL, accessURL = accessURL, authURL = authURL)
+my_oauth$handshake(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl"))
+library(graphTweets)
+library(igraph)
+library(streamR)
+library(ROAuth)
+requestURL <- "https://api.twitter.com/oauth/request_token"
+accessURL <- "https://api.twitter.com/oauth/access_token"
+authURL <- "https://api.twitter.com/oauth/authorize"
+consumerKey <- 	"kbYlzDS9qCDcU0Veub36hzmZT"
+consumerSecret <- "	lwUyAehocYxNEHOL5aVNlpcWF9v90y9N34qYRBuZYuK2k0AMoX"
+my_oauth <- OAuthFactory$new(consumerKey = consumerKey, consumerSecret = consumerSecret,
+requestURL = requestURL, accessURL = accessURL, authURL = authURL)
+my_oauth$handshake(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl"))
+cred$handshake(cainfo="cacert.pem")
+save(my_oauth, file = "my_oauth.Rdata")
+my_oauth$handshake(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl"))
+install.packages("Rfacebook")
+install.packages("RCirl")
+install.packages("RCurl")
+install.packages("RCurl")
+library(Rfacebook)
+library(RCurl)
+fb_oauth <- fbOAuth(app_id="196669757790057",
+app_secret="ba525af554920f3120dd6f0413cf9268",
+extended_permissions = TRUE)
+fb_oauth <- fbOAuth(app_id="196669757790057",
+app_secret="ba525af554920f3120dd6f0413cf9268",
+extended_permissions = TRUE)
+fb_oauth <- fbOAuth(app_id="196669757790057",
+app_secret="ba525af554920f3120dd6f0413cf9268",
+extended_permissions = TRUE)
+fb_oauth <- fbOAuth(app_id="196669757790057",
+app_secret="ba525af554920f3120dd6f0413cf9268",
+extended_permissions = TRUE)
+library(Rfacebook)
+library(RCurl)
+fb_oauth <- fbOAuth(app_id="196669757790057",
+app_secret="ba525af554920f3120dd6f0413cf9268",
+extended_permissions = TRUE)
+library(tidyverse)
+library(httr)
+library(jsonlitte)
+install.packages("jsonlitte")
+library(jsonlitte)
+install.packages("jsonlitte")
+library(jsonlite)
+library(magrittr)
+library(ggplot2)
+airline <- fromJSON('https://api.flightstats.com/flex/airlines/rest/v1/schema/json')
+active <-airline$active
+install.packages("lubridate")
+install.packages("lubridate")
+library(lubridate)
+library(lubridate)
+names(airline)
+active <-airline$type
+active <- airline$type
+airline$type
+airline$id
+airline$properties
+columnnames(airline$type)
+colnames(airline$type)
+res <- fromJSON('http://ergast.com/api/f1/2004/1/results.json')
+name(res)
+name(airline)
+library(tidyverse)
+library(httr)
+library(jsonlite)
+library(lubridate)
+library(magrittr)
+library(ggplot2)
+airline <- fromJSON('https://api.flightstats.com/flex/airlines/rest/v1/schema/json')
+name(airline)
+names(airline)
+names(res)
+content(airline)
+x <- as.data.frame(airline[[1]])
+View(x)
+c <- as.data.frame(airline$columns)
+class(airline)
+class(rawtoChar(airline))
+r2 <- rawtoChar(airline$content)
+r2 <- rawToChar(airline$content)
+rawToChar(airline)
+rawToChar(airline$type)
+rawToChar(airline$content)
+rawToChar(airline$properties)
+x <- fromJSON("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=mueller&api-key=4585e29fd9f04d5fb66502fdf7458c93")
+x <- fromJSON("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=mueller&api-key=4585e29fd9f04d5fb66502fdf7458c93")
+x <- fromJSON("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=mueller&api-key=YOUR_API_KEY_HERE", flatten = TRUE) %>% data.frame()
+x <- fromJSON("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=mueller&api-key=4585e29fd9f04d5fb66502fdf7458c93", flatten = TRUE) %>% data.frame()
+list(name = c("persons", "organizations", "subject"), value = c("Mueller, Robert S III", "Federal Bureau of Investigation", "United States Politics and Government"), rank = 1:3, major = c("N", "N", "N"))
+View(x)
+x <- fromJSON("http://api.nytimes.com/svc/community/v3/user-content/by-date.json?q=mueller&api-key=4585e29fd9f04d5fb66502fdf7458c93")
+x <- fromJSON("http://api.nytimes.com/svc/community/v3/user-content/by-date.json?q=schoolshooting&api-key=4585e29fd9f04d5fb66502fdf7458c93")
+x <- fromJSON("http://api.nytimes.com/svc/community/v3/user-content/by-date.json?api-key={4585e29fd9f04d5fb66502fdf7458c93}&date={2016-01-01}[&offset=int]")
+y <- fromJSON("http://api.nytimes.com/svc/community/v3/user-content/by-date.json?date=2008-01-02")
+x <- fromJSON("http://api.nytimes.com/svc/community/{version}/user-content/by-date.json?api-key=4585e29fd9f04d5fb66502fdf7458c93&date=2016-01-01")
+x <- fromJson("http://api.nytimes.com/svc/community/{version}/user-content/by-date.json?api-key={4585e29fd9f04d5fb66502fdf7458c93}&date={2016-01-01}[&offset=int]
+x <- fromJSON("http://api.nytimes.com/svc/community/{version}/user-content/by-date.json?api-key=4585e29fd9f04d5fb66502fdf7458c93&date=2016-01-01")
+y <- fromJSON("http://api.nytimes.com/svc/community/v3/user-content/by-date.json?date=2008-01-02")
+x <- fromJson("http://api.nytimes.com/svc/community/{version}/user-content/by-date.json?api-key={4585e29fd9f04d5fb66502fdf7458c93}&date={2016-01-01}[&offset=int]
+x <- fromJSON("http://api.nytimes.com/svc/community/{version}/user-content/by-date.json?api-key=4585e29fd9f04d5fb66502fdf7458c93&date=2016-01-01")
+y <- fromJSON("http://api.nytimes.com/svc/community/v3/user-content/by-date.json?date=2008-01-02")
+key <- AuthenticateWithYoutubeAPI(apikey)
+library(SocialMediaLab)
+apikey <- "AIzaSyDeYAwuDErvBe4w4nTVu3YN8TgbyoElxtE"
+key <- AuthenticateWithYoutubeAPI(apikey)
+?CollectDataYoutube
+video <- c('xgIJosk0pnA', 'yW61tS8H66E&t=11s')
+videos <- c('xgIJosk0pnA', 'yW61tS8H66E&t=11s')
+apikey <- "AIzaSyDeYAwuDErvBe4w4nTVu3YN8TgbyoElxtE"
+key <- AuthenticateWithYoutubeAPI(apikey)
+videos <- c('xgIJosk0pnA', 'yW61tS8H66E&t=11s')
+CollectDataYoutube(videos, key, writeToFile = FALSE )
+RT_data <-CollectDataYoutube(videos, key, writeToFile = FALSE )
+View(RT_data)
+videos <- c('xgIJosk0pnA', 'yW61tS8H66E&t=11s','v=NOtLVU5NhFw','WZwwzP6ANQo')
+RT_data <-CollectDataYoutube(videos, key, writeToFile = FALSE )
+View(RT_data)
+library(tuber)
+?get_all_comments
+get_all_comments(videos)
+?CollectDataYoutube()
+RT_data <-CollectDataYoutube(videos, key, writeToFile = FALSE, maxComments = 5000 )
+yt_oauth()
+?yt_oauth
+str(RT_data)
+write.csv(RT_data)
+write.csv(RT_data, file = '~Desktop/MA415/Final-Project/RT_data')
+RT_data<-write.csv(RT_data)
+write.csv(RT_data, file = "RT_data")
+RT_data <-CollectDataYoutube(videos, key, writeToFile = FALSE )
+write.csv(RT_data, file = "RT_data")
+clientID <- 979385012952-iive5jqvebq2emfhrnld66iflt1rq1t8.apps.googleusercontent.com
+client_secrete <- F5n5Sxt2PXkeeUnnI89mJGo5
+clientID <- "979385012952-iive5jqvebq2emfhrnld66iflt1rq1t8.apps.googleusercontent.com"
+client_secrete <- "F5n5Sxt2PXkeeUnnI89mJGo5"
+querylist <- list(videoId = videos, part = "id,replies,snippet", maxResults = 1000)
+get_all_comments <- function (video_id = NULL, ...) {
+querylist <- list(videoId = videos, part = "id,replies,snippet", maxResults = 1000)
+res <- tuber_GET("commentThreads", querylist, ...)
+agg_res <- process_page(res)
+page_token  <- res$nextPageToken
+yt_oauth()
+key <- AuthenticateWithYoutubeAPI(apikey)
+#Collecting Real Time Data
+#Selecting abc and CNN channel's school shootings' news with the most click
+videos <- c('xgIJosk0pnA', 'yW61tS8H66E&t=11s','v=NOtLVU5NhFw','WZwwzP6ANQo')
+get_all_comments(videos)
+RT_data <-CollectDataYoutube(videos, key, writeToFile = FALSE )
+write.csv(RT_data, file = "RT_data")
+`ejfnlamew`
+kwjdbfxquwerlinsqAJWEBDJ,ywjzm.KAWe
+while ( is.character(page_token)) {
+querylist$pageToken <- page_token
+a_res <- tuber_GET("commentThreads", querylist, ...)
+agg_res <- rbind(agg_res, process_page(a_res), stringsAsFactors = FALSE)
+page_token  <- a_res$nextPageToken
+}
+httr::set_config( config( ssl_verifypeer = 0L ) ) # = Fixes some certificate problems on linux = #
+library(tuber)
+httr::set_config( config( ssl_verifypeer = 0L ) ) # = Fixes some certificate problems on linux = #
+library(stringi)
+library(wordcloud)
+install.packages("wordcloud")
+library(wordcloud)
+install.packages("RColorBrewer")
+install.packages("RColorBrewer")
+library(wordcloud)
+library(gridExtra)
+httr::set_config( config( ssl_verifypeer = 0L ) ) # = Fixes some certificate problems on linux = #
+yt_oauth("ID",
+"PASS",token = "")
+yt_oauth("998136489867-5t3tq1g7hbovoj46dreqd6k5kd35ctjn.apps.googleusercontent.com",
+"MbOSt6cQhhFkwETXKur-L9rN")
+?yt_oauth
+yt_oauth("979385012952-iive5jqvebq2emfhrnld66iflt1rq1t8.apps.googleusercontent.com",
+"F5n5Sxt2PXkeeUnnI89mJGo5")
+yt_oauth(app_id, app_secret, token = '')
+yt_oauth("979385012952-iive5jqvebq2emfhrnld66iflt1rq1t8.apps.googleusercontent.com",
+"F5n5Sxt2PXkeeUnnI89mJGo5")
+clientID <- "979385012952-iive5jqvebq2emfhrnld66iflt1rq1t8.apps.googleusercontent.com"
+client_secrete <- "F5n5Sxt2PXkeeUnnI89mJGo5"
+yt_oauth(clientID, client_secrete, token = '')
+videos <- c('xgIJosk0pnA', 'yW61tS8H66E&t=11s','v=NOtLVU5NhFw','WZwwzP6ANQo')
+get_all_comments(videos)
+?yt_search()
+get_stats('xgIJosk0pnA')
+?get_all_comments
+get_all_comments(video_id = videos)
+get_all_comments(video_id = c('xgIJosk0pnA'))
+get_all_comments(video_id = c('xgIJosk0pnA'), max=1000)
+comments <- get_all_comments(video_id = c('xgIJosk0pnA'), max=1000)
+View(comments)
+library(tuber)
+clientID <- "979385012952-iive5jqvebq2emfhrnld66iflt1rq1t8.apps.googleusercontent.com"
+client_secrete <- "F5n5Sxt2PXkeeUnnI89mJGo5"
+yt_oauth(clientID, client_secrete, token = '')
+comments <- get_all_comments(video_id = c('xgIJosk0pnA'), max=1000)
+View(comments)
+comments_abc <- get_all_comments(video_id = c('xgIJosk0pnA'))
+comments_cnn <- get_all_comments(video_id = c('yW61tS8H66E&t=11s'), max=1000)
+comments_cnn <- get_all_comments(video_id = c('yW61tS8H66E&t=11s'))
+comments_cnn <- get_all_comments(video_id = c('yW61tS8H66E&t=11s'))
+comments_cnn <- get_all_comments(video_id = c('yW61tS8H66E&t=11s'))
+comments_cnn <- get_all_comments(video_id = c('WZwwzP6ANQo'))
+comments_cnn <- get_all_comments(video_id = c('yW61tS8H66E&t=11s'))
+comments_cnn <- get_all_comments(video_id = c('v=yW61tS8H66E&t=11s'))
+comments_cnn <- get_all_comments(video_id = c('yW61tS8H66E&t'))
+comments_cnn <- get_all_comments(video_id = c('yW61tS8H66E'))
+View(comments_abc)
+View(comments_cnn)
+RT_data <-CollectDataYoutube(videos, key, writeToFile = FALSE )
+apikey <- "AIzaSyDeYAwuDErvBe4w4nTVu3YN8TgbyoElxtE"
+key <- AuthenticateWithYoutubeAPI(apikey)
+RT_data <-CollectDataYoutube(videos, key, writeToFile = FALSE )
+videos <- c('xgIJosk0pnA', 'yW61tS8H66E&t=11s','v=NOtLVU5NhFw','WZwwzP6ANQo')
+RT_data <-CollectDataYoutube(videos, key, writeToFile = FALSE )
+View(RT_data)
+class(comments_abc)
+View(comments_abc)
+get_stats('xgIJosk0pnA')
+get_video_details('xgIJosk0pnA')
+?list_regions()
+list_regions()
+get_captions('xgIJosk0pnA')
+?get_captions
+get_captions("979385012952-iive5jqvebq2emfhrnld66iflt1rq1t8.apps.googleusercontent.com")
+get_related_videos('xgIJosk0pnA')
+related_videos <- get_related_videos('xgIJosk0pnA')
+View(related_videos)
+related_videos2 <- get_related_videos('yW61tS8H66E')
+View(related_videos2)
+get_related_videos(?)
+?get_related_videos()
+?get_video_details
+list_caption_tracks
+?list_caption_tracks
+list_videos()
+all_comments <- merge(comments_abc,comments_cnn)
+View(all_comments)
+all_comments <- cbind(comments_abc, comments_cnn)
+all_comments <- rbind(comments_abc, comments_cnn)
+View(all_comments)
+data <- data.frame(all_comments$authorDisplayName,
+all_comments$textOriginal,
+all_comments$likeCount,
+all_comments$publishedAt)#real time data suppose, if no added
+View(data)
+class("school shootings")
+yt_search("school_shootings")
+yt_search("school shootings", max_results = 50)
+test <- yt_search("school shootings", max_results = 50)
+View(test)
+test <- yt_search("school shooting", max_results = 100)
+test <- yt_search("school shooting")
+View(test)
+test3 <- yt_search("School Shooting", lang ="en")
+test3 <- yt_search("Florida School Shooting", lang ="en")
+View(test3)
+?yt_search
+test <- yt_search("school shootings", max_results =20, lang="en")
+View(test)
+test <- yt_search("school shootings", type=video, lang="en", event_type = 'completed', published_after = 2018-01-01)
+test <- yt_search("school shootings", lang="en", event_type = 'completed', published_after = 2018-01-01)
+test <- yt_search("school shootings", lang="en", published_after = 2018-01-01)
+test <- yt_search("school shootings", published_after = 2018-01-01)
+test <- yt_search("school shootings", lang="en")
+test <- yt_search("school shootings", lang="en", published_after =  "2018-01-01T00:00:00Z")
+View(test)
+test2 <- yt_search("school shooting", lang ="en",published_after =  "2018-01-01T00:00:00Z")
+View(test2)
+View(test)
+news <- yt_search("school shootings", lang="en", published_after =  "2018-01-01T00:00:00Z")
+new <- yt_search("school shooting", lang ="en",published_after =  "2018-01-01T00:00:00Z")
+View(news)
+News <- rbind(news$publishedAt,news$title,new$publishedAt,new$title)
+News <- rbind(news,new)
+News <- data.frame(news$publishedAt,
+news$title,
+new$publishedAt,
+new$title)
+News <- data.frame(News$publishedAt,
+News$title,
+News$publishedAt,
+News$title)
+View(News)
+News <- cbind(news,new)
+News <- data.frame(News$publishedAt,
+News$title,)
+News <- data.frame(News$publishedAt,
+News$title)
+News <- rbind(news,new)
+News <- data.frame(News$publishedAt,
+News$title)
+View(News)
+View(News)
+News[1]
+News[2]
+News[2][1]
+News[2][1]
+News[2](1)
+News[2,1]
+News[1,2]
+View(News)
+for (i in 1:77){if(News[1,i]==News[1,i+1])
+{News[-c(i),]}}
+News[1,2]
+News[1,3]
+News[2,2]
+for (i in 1:77){if(News[i,2]==News[i+1,2])
+{News[-c(i),]}}
+for (i in 1:77){if(News[i,2]==News[i+1,2]){return(News[-c(i),])}}
+View(News)
+for (i in 1:77){if(News[i,2]==News[,2]){return(News[-c(i),])}}
+duplicated(News)
+duplicated(News$News.title)
+duplicated(News$News.publishedAt)
+c<-c(1,2,3,4,5,6,7,6,,4,3,4,5,6,8,9,0)
+c <- c(1,2,3,4,5,6,7,6,,4,3,4,5,6,8,9,0)
+c <- c(1,2,3,4,5,6,7,6,4,3,4,5,6,8,9,0)
+duplicataed(c)
+duplicated(c)
+duplicated(News$News.title)
+News[!duplicated(News$News.title)]
+News[!duplicated(News$News.title),]
+News[1,2]
+News[2,2]
+News <- News[!duplicated(News$News.title),]
+View(News)
+library(tuber)
+library(dplyr)
+library(tidytext)
+lookupusers
+?lookupUsers
+get_all_channel_video_stats(''xgIJosk0pnA'')
+?get_all_channel_video_stats()
+get_all_channel_video_stats('xgIJosk0pnA')
+yt_oauth(clientID, client_secrete, token = '')
+get_all_channel_video_stats('xgIJosk0pnA')
+get_channel_stats('xgIJosk0pnA')
+get_channel_stats(c('xgIJosk0pnA'))
+clientID <- "979385012952-iive5jqvebq2emfhrnld66iflt1rq1t8.apps.googleusercontent.com"
+client_secrete <- "F5n5Sxt2PXkeeUnnI89mJGo5"
+yt_oauth(clientID, client_secrete, token = '')
+get_channel_stats(c('xgIJosk0pnA'))
+get_channel_stats(c('UCzlvW8DROR5x8nt8dcaHgRg'))
+get_channel_stats(UCzlvW8DROR5x8nt8dcaHgRg)
+get_channel_stats('UCzlvW8DROR5x8nt8dcaHgRg')
+get_all_channel_video_stats(channel_id="UCxOhDvtaoXDAB336AolWs3A")
+get_sentiments("afinn")
+?data_frame
+tidy_real_data<- data %>%
+unnest_tokens(word, text)
+View(data)
+tidy_real_data<- data %>%
+unnest_tokens(word, text)
+library(tuber)
+library(dplyr)
+library(tidytext)
+tidy_real_data<- data %>%
+unnest_tokens(word, text)
